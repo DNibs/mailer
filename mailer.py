@@ -30,7 +30,7 @@ import sys
 
 
 # Change the directory variable
-DIRECTORY = 'C:\\Users\\david.niblick\\PycharmProjects\\mailer\\output\\'
+DIRECTORY = 'C:\\Users\\david.niblick\\West Point\\Courses - EE302\\AY21-2\\Turned in Assignments\\Section C Raftery\\Lab5\\'
 
 # Append any files you wish to except from the mailing list
 EXCEPTION_LIST = []
@@ -42,6 +42,7 @@ EMAIL_SUBJECT_FILE_NAME = DIRECTORY + 'email_subject.txt'
 EXCEPTION_LIST.append('email_body_message.txt')
 EXCEPTION_LIST.append('roster.csv')
 EXCEPTION_LIST.append('email_subject.txt')
+EXCEPTION_LIST.append('emailed')
 
 
 def send_email(recip, body, subject, att_rel_path):
@@ -87,7 +88,7 @@ if body_msg == '' or email_subject == '':
     print('Missing valid email body from email_body_message.txt or subject from email_subject.txt')
     exit()
 
-files = [item for item in listdir(DIRECTORY) if item.endswith('.txt')]
+files = [item for item in listdir(DIRECTORY)]
 total_files += len(files) - 2
 
 for file_name in files:
