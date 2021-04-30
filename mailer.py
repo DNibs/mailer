@@ -31,9 +31,17 @@ import sys
 
 # Change the directory variable
 DIRECTORY = 'C:\\Users\\david.niblick\\PycharmProjects\\mailer\\output\\'
+
+# Append any files you wish to except from the mailing list
+EXCEPTION_LIST = []
+EXCEPTION_LIST.append('grades.xlsx')
+
 EMAIL_BODY_FILE_NAME = DIRECTORY + 'email_body_message.txt'
 CLASS_EMAIL_ROSTER_FILE_NAME = DIRECTORY + 'roster.csv'
-EMAIL_SUBJECT_FILE_NAME = DIRECTORY + "email_subject.txt"
+EMAIL_SUBJECT_FILE_NAME = DIRECTORY + 'email_subject.txt'
+EXCEPTION_LIST.append('email_body_message.txt')
+EXCEPTION_LIST.append('roster.csv')
+EXCEPTION_LIST.append('email_subject.txt')
 
 
 def send_email(recip, body, subject, att_rel_path):
@@ -83,7 +91,7 @@ files = [item for item in listdir(DIRECTORY) if item.endswith('.txt')]
 total_files += len(files) - 2
 
 for file_name in files:
-    if file_name != 'roster.csv' and file_name != 'email_body_message.txt' and file_name != 'email_subject.txt':
+    if file_name not in EXCEPTION_LIST:
         print("file_name is ", file_name)
         username = file_name.split('_')[0]
         print(username)
